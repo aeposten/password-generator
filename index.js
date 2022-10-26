@@ -11,6 +11,7 @@ const CHARACTERS  = [
     '.', '?', '/'
   ]
 
+let radioButtons = document.getElementsByClassName("radio-value");
 let passwordOne = document.getElementById("password-1");
 let passwordTwo = document.getElementById("password-2");
 let lengthsEl = document.getElementById("password-lengths");
@@ -18,6 +19,13 @@ let isFiltered = false;
 let passwordString;
 let filtered;
 
+//Generates password in password div
+function generatePassword(element) {
+    isFiltered ? setTextContent(filtered) : setTextContent(CHARACTERS);
+    element.textContent = passwordString;
+  }
+  
+//Sets text content of the password string
 function setTextContent(arr) {
   let selectedLength = parseInt(lengthsEl.value);
   passwordString = "";
@@ -28,11 +36,7 @@ function setTextContent(arr) {
   return passwordString;
 }
 
-function generatePassword(element) {
-  isFiltered ? setTextContent(filtered) : setTextContent(CHARACTERS);
-  element.textContent = passwordString;
-}
-
+//Copies password to clipboard on click
 function copyPassword(element) {
   let copiedText = element.textContent;
   navigator.clipboard.writeText(copiedText);
@@ -45,8 +49,8 @@ function setRegex(reg) {
   return filtered;
 }
 
+
 function filterCharacters() {
-  let radioButtons = document.getElementsByClassName("radio-value");
   let regexNum = /\D/;
   let regexSym = /[^_\W]+/;
   let radioValue;
@@ -58,4 +62,3 @@ function filterCharacters() {
   }
   radioValue === "num" ? setRegex(regexNum) : setRegex(regexSym);
 }
-
