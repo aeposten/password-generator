@@ -13,9 +13,7 @@ const CHARACTERS  = [
 
 let passwordOne = document.getElementById("password-1");
 let passwordTwo = document.getElementById("password-2");
-let lengthsEl = document.getElementById("password-lengths")
-
-
+let lengthsEl = document.getElementById("password-lengths");
 
 function generatePassword(element) {
   let passwordString = "";
@@ -25,5 +23,10 @@ function generatePassword(element) {
     passwordString += CHARACTERS[randomIndex];
   }
   element.textContent = passwordString;
+}
 
+function copyPassword(element) {
+  let copiedText = element.textContent;
+  navigator.clipboard.writeText(copiedText);
+  alert('Password copied to clipboard!')
 }
