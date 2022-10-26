@@ -13,13 +13,17 @@ const CHARACTERS  = [
 
 let passwordOne = document.getElementById("password-1");
 let passwordTwo = document.getElementById("password-2");
+let lengthsEl = document.getElementById("password-lengths")
 
-function generatePassword(element, selectedLength) {
+
+
+function generatePassword(element) {
   let passwordString = "";
-  for (let i = 0; i <= 15; i++) {
+  let selectedLength = parseInt(lengthsEl.value);
+  for (let i = 0; i <= selectedLength; i++) {
     let randomIndex = Math.floor(Math.random() * CHARACTERS.length);
     passwordString += CHARACTERS[randomIndex];
   }
-    element.textContent = passwordString;
-}
+  element.textContent = passwordString;
 
+}
