@@ -14,26 +14,23 @@ const CHARACTERS  = [
 let passwordOne = document.getElementById("password-1");
 let passwordTwo = document.getElementById("password-2");
 let lengthsEl = document.getElementById("password-lengths");
+let passwordString;
 let isFiltered = false;
 let filtered;
 
-function generatePassword(element) {
-  let passwordString = "";
+function setTextContent(arr) {
   let selectedLength = parseInt(lengthsEl.value);
-
-  if (isFiltered) {
-    for (let i = 0; i <= selectedLength; i++) {
-      let randomIndex = Math.floor(Math.random() * filtered.length);
-      passwordString += filtered[randomIndex];
-    }
-    element.textContent = passwordString;
-  } else {
-    for (let i = 0; i <= selectedLength; i++) {
-      let randomIndex = Math.floor(Math.random() * CHARACTERS.length);
-      passwordString += CHARACTERS[randomIndex];
-    }
-    element.textContent = passwordString;
+  passwordString = ""
+  for (let i = 0; i <= selectedLength; i++) {
+    let randomIndex = Math.floor(Math.random() * arr.length);
+    passwordString += arr[randomIndex];
   }
+  return passwordString;
+}
+
+function generatePassword(element) {
+  isFiltered ? setTextContent(filtered) : setTextContent(CHARACTERS);
+  element.innerText = passwordString;
 }
 
 function copyPassword(element) {
@@ -61,4 +58,9 @@ function filterCharacters() {
   console.log(filtered);
   isFiltered = true;
   return filtered;
+}
+
+function clearFields() {
+    isFiltered = false;
+
 }
