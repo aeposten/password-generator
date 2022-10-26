@@ -14,19 +14,46 @@ const CHARACTERS  = [
 let passwordOne = document.getElementById("password-1");
 let passwordTwo = document.getElementById("password-2");
 let lengthsEl = document.getElementById("password-lengths");
+let isFiltered = false;
+let filtered;
 
 function generatePassword(element) {
   let passwordString = "";
   let selectedLength = parseInt(lengthsEl.value);
+
+  if (isFiltered) {
+    for (let i = 0; i <= selectedLength; i++) {
+        let randomIndex = Math.floor(Math.random() * filtered.length);
+        passwordString += filtered[randomIndex];
+      }
+      element.textContent = passwordString;
+  } else {
+
   for (let i = 0; i <= selectedLength; i++) {
     let randomIndex = Math.floor(Math.random() * CHARACTERS.length);
     passwordString += CHARACTERS[randomIndex];
   }
-  element.textContent = passwordString;
+  element.textContent = passwordString}
 }
 
 function copyPassword(element) {
   let copiedText = element.textContent;
   navigator.clipboard.writeText(copiedText);
-  alert('Password copied to clipboard!')
+  alert("Password copied to clipboard!");
+}
+
+function filterCharacters(characterType) {
+  let regexNum = /\D/;
+  let regexSym = /[^_\W]+/;
+
+    console.log(characterType);
+  if (characterType === 'num')
+  {filtered = CHARACTERS.filter((character) => regexNum.test(character));} else {
+    filtered = CHARACTERS.filter((character) => regexSym.test(character));
+  }
+
+  console.log(filtered);
+  isFiltered = true;
+  return filtered;
+
 }
