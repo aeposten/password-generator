@@ -23,17 +23,17 @@ function generatePassword(element) {
 
   if (isFiltered) {
     for (let i = 0; i <= selectedLength; i++) {
-        let randomIndex = Math.floor(Math.random() * filtered.length);
-        passwordString += filtered[randomIndex];
-      }
-      element.textContent = passwordString;
+      let randomIndex = Math.floor(Math.random() * filtered.length);
+      passwordString += filtered[randomIndex];
+    }
+    element.textContent = passwordString;
   } else {
-
-  for (let i = 0; i <= selectedLength; i++) {
-    let randomIndex = Math.floor(Math.random() * CHARACTERS.length);
-    passwordString += CHARACTERS[randomIndex];
+    for (let i = 0; i <= selectedLength; i++) {
+      let randomIndex = Math.floor(Math.random() * CHARACTERS.length);
+      passwordString += CHARACTERS[randomIndex];
+    }
+    element.textContent = passwordString;
   }
-  element.textContent = passwordString}
 }
 
 function copyPassword(element) {
@@ -42,18 +42,23 @@ function copyPassword(element) {
   alert("Password copied to clipboard!");
 }
 
-function filterCharacters(characterType) {
+function filterCharacters() {
   let regexNum = /\D/;
   let regexSym = /[^_\W]+/;
-
-    console.log(characterType);
-  if (characterType === 'num')
-  {filtered = CHARACTERS.filter((character) => regexNum.test(character));} else {
+  let radioValue;
+  let radioButtons = document.getElementsByClassName("radio-value");
+  for (button of radioButtons) {
+    if (button.checked) {
+      radioValue = button.value;
+    }
+  }
+  if (radioValue === "num") {
+    filtered = CHARACTERS.filter((character) => regexNum.test(character));
+  } else {
     filtered = CHARACTERS.filter((character) => regexSym.test(character));
   }
 
   console.log(filtered);
   isFiltered = true;
   return filtered;
-
 }

@@ -4,13 +4,7 @@
     <link rel="stylesheet" href="styles.css" />
     <title>Random Password Generator</title>
   </head>
-  <body>
-    <button
-      id="generate-btn"
-      onClick="generatePassword(passwordOne); generatePassword(passwordTwo);"
-    >
-      Generate Password
-    </button>
+  <body></body>
     <div id="password-1" onClick="copyPassword(passwordOne)">password appears here</div>
     <div id="password-2" onClick="copyPassword(passwordTwo)">password appears here</div>
     <label for="password-lengths">Select Desired Password Length</label>
@@ -21,8 +15,16 @@
       <option value="17">17</option>
     </select>
     characters
-    <button onClick="filterCharacters('num')">Exclude Nubers</button>
-    <button onClick="filterCharacters('sym')">Exclude Symbols</button>
+    <!-- <button onClick="filterCharacters('num')">Exclude Nubers</button>
+    <button onClick="filterCharacters('sym')">Exclude Symbols</button> -->
+    <input type="radio" value="num" name="filter-char" class="radio-value" onClick="filterCharacters()"> Filter numbers
+    <input type="radio" value="sym" name="filter-char" class="radio-value" onClick="filterCharacters()"> Filter symbols
+    <button
+    id="generate-btn"
+    onClick="generatePassword(passwordOne); generatePassword(passwordTwo);"
+  >
+    Generate Password
+  </button>
     <script type="text/javascript" src="index.js"></script>
   </body>
 </html>
