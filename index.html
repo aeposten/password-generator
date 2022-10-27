@@ -16,7 +16,7 @@
           onSubmit="setTextContent(passwordOne); setTextContent(passwordTwo); return false;"
         >
           <label for="password-lengths">Desired password length</label>
-          <input type="number" id="user-input" min="10" max="20" required/>
+          <input type="number" id="user-input" class="text" min="10" max="20" required/>
           characters
           <p>
             <label for="radio-value">Remove Numbers or Symbols</label>
@@ -24,33 +24,33 @@
               type="radio"
               value="numbers"
               name="filter-char"
-              class="radio-value"
+              class="radio-value pointer"
               onClick="setFilter()"
             /><label for="numbers"> Numbers </label>
             <input
               type="radio"
               value="symbols"
               name="filter-char"
-              class="radio-value"
+              class="radio-value pointer"
               onClick="setFilter()"
             />
             <label for="symbols"> Symbols </label>
           </p>
-          <input id="generate-btn" type="submit" value="Generate Passwords" />
+          <input id="generate-btn" class="pointer" type="submit" value="Generate Passwords" />
         </form>
       </section>
       <section id="password-divs">
         <span id="click">Click password to copy to clipboard</span>
         <div
           id="password-1"
-          class="password"
+          class="password pointer"
           onClick="copyPassword(passwordOne)"
         >
           password appears here
         </div>
         <div
           id="password-2"
-          class="password"
+          class="password pointer"
           onClick="copyPassword(passwordTwo)"
         >
           password appears here

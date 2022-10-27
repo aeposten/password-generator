@@ -19,6 +19,13 @@ body {
   color: white;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
+.text {
+    cursor: text;
+}
 /* Formatting for "app" elementt */
 #app {
   width: 80%;
@@ -65,6 +72,11 @@ h3 {
   border-radius: 4px;
   background-color: var(--green);
   color: white;
+  transition-duration: 200ms;
+}
+
+#generate-btn:hover, #generate-btn:focus {
+    transform: scale(1.1);
 }
 
 /* Formatting for divs where passwords appear */
@@ -81,6 +93,7 @@ h3 {
   font-size: 14px;
   width: 70px;
 }
+
 .password {
   padding: 10px;
   width: 170px;
@@ -89,6 +102,7 @@ h3 {
   border-radius: 4px;
   background-color: var(--offwhite);
   color: var(--green);
+  cursor: pointer;
 }
 
 /* Grouping frequently used  properties*/
