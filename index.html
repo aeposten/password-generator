@@ -6,40 +6,41 @@
   </head>
   <body>
     <main id="app">
-    <section id="generate-passwords">
-      <h1 id="title"><p id="white">Generate a</p><p id="green">random password</p></h1>
-      <h3>Never use an insecure password again.</h3>
-      <form onSubmit="setTextContent(passwordOne); setTextContent(passwordTwo); return false;">
-        <label for="password-lengths">Desired password length</label>
-        <input type="number" id="user-input" min="10" max="20" />
-        characters
-        <p>
-          <label for="radio-value">Remove Numbers or Symbols</label>
-          <input
-            type="radio"
-            value="num"
-            name="filter-char"
-            class="radio-value"
-            onClick="setFilter()"
-          />
-          Numbers
-          <input
-            type="radio"
-            value="sym"
-            name="filter-char"
-            class="radio-value"
-            onClick="setFilter()"
-          />
-          Symbols
-        </p>
-        <input
-          id="generate-btn"
-          type="submit"
-          value="Generate Password"
-        />
-      </form>
-    </section>
+      <section id="generate-passwords">
+        <h1 id="title">
+          <p id="white" class="set-margin">Generate a</p>
+          <p id="green" class="set-margin">random password</p>
+        </h1>
+        <h3>Never use an insecure password again.</h3>
+        <form
+          onSubmit="setTextContent(passwordOne); setTextContent(passwordTwo); return false;"
+        >
+          <label for="password-lengths">Desired password length</label>
+          <input type="number" id="user-input" min="10" max="20" required/>
+          characters
+          <p>
+            <label for="radio-value">Remove Numbers or Symbols</label>
+            <input
+              type="radio"
+              value="numbers"
+              name="filter-char"
+              class="radio-value"
+              onClick="setFilter()"
+            /><label for="numbers"> Numbers </label>
+            <input
+              type="radio"
+              value="symbols"
+              name="filter-char"
+              class="radio-value"
+              onClick="setFilter()"
+            />
+            <label for="symbols"> Symbols </label>
+          </p>
+          <input id="generate-btn" type="submit" value="Generate Passwords" />
+        </form>
+      </section>
       <section id="password-divs">
+        <span id="click">Click password to copy to clipboard</span>
         <div
           id="password-1"
           class="password"

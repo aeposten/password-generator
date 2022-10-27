@@ -36,15 +36,6 @@ function generatePassword(arr) {
   }
   return passwordString;
 }
-
-//Copies password to clipboard on click
-function copyPassword(element) {
-  let copiedText = element.textContent;
-  navigator.clipboard.writeText(copiedText).then(() => {
-    alert("Password copied to clipboard!");
-  });
-}
-
 //Sets filter based on selected options then uses filterCharacters to filter array based on selected option
 function setFilter() {
   let regexNum = /\D/;
@@ -56,7 +47,7 @@ function setFilter() {
       radioValue = button.value;
     }
   }
-  radioValue === "num"
+  radioValue === "numbers"
     ? filterCharacters(regexNum)
     : filterCharacters(regexSym);
 }
@@ -66,4 +57,12 @@ function filterCharacters(reg) {
   filtered = CHARACTERS.filter((character) => reg.test(character));
   isFiltered = true;
   return filtered;
+}
+
+//Copies password to clipboard on click
+function copyPassword(element) {
+  let copiedText = element.textContent;
+  navigator.clipboard.writeText(copiedText).then(() => {
+    alert("Password copied to clipboard!");
+  });
 }

@@ -1,89 +1,102 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;800&display=swap");
 
-/* Color Scheme:
-    main-background: #1C1C1C 
-    app-background: #1F2937
-    green: #10B981
-    */
-
-body {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    height: 100vh;
-    background-color: #1C1C1C;
-    font-family: 'Karla', sans-serif;
-    font-weight: 100;
-    color: #FFFFFF;
+/* Variables for colors */
+:root {
+  --mainbg: #1c1c1c;
+  --appbg: #1f2937;
+  --green: #10b981;
+  --line: #2f3e53;
+  --offwhite: #ececec;
 }
 
+/* General Formatting for Body of Page */
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: var(--mainbg);
+  font-family: "Karla", sans-serif;
+  font-weight: 100;
+  color: white;
+}
+
+/* Formatting for "app" elementt */
 #app {
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    width: 80%;
-    max-width: 600px;
-    background-color: #1F2937;
+  width: 80%;
+  max-width: 600px;
+  background-color: var(--appbg);
+}
+
+.set-margin {
+  margin: 9px 0 9px 0;
 }
 
 h1 {
-    font-size: 42px;
-    margin-bottom: 2px;
+  font-size: 42px;
+  margin-bottom: 2px;
 }
 
 h3 {
-    margin-top: 2px;
-    font-weight: 400;
-    color: #FFFFFF;
+  margin-top: 2px;
+  font-weight: 400;
+  color: white;
 }
 
 #white {
-    color: #FFFFFF;
-    margin: 9px 0 9px 0;
+  color: white;
 }
 
 #green {
-    color: #10B981;
-    margin: 9px 0 9px 0;
+  color: var(--green);
 }
 
-
+/* Formatting for Generate Password Buttpm */
 #generate-passwords {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
 }
 
 #generate-btn {
-    background-color: #10B981;
-    border: none;
-    margin: 20px 0 20px 0;
-    padding: 10px;
-    width: 170px;
-    height: 40px;
-    border-radius: 4px;
-    color: #FFFFFF;
+  width: 170px;
+  height: 40px;
+  margin: 20px 0 20px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--green);
+  color: white;
 }
 
+/* Formatting for divs where passwords appear */
 #password-divs {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    border-top: 1px solid #2F3E53;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  border-top: 1px solid var(--line);
 }
 
+#click {
+  font-size: 14px;
+  width: 70px;
+}
 .password {
-    padding: 10px;
-    width: 170px;
-    height: 20px;
-    text-align: center;
-    border-radius: 4px;
-    background-color: #ECECEC;
-    color: #10B981;
+  padding: 10px;
+  width: 170px;
+  height: 20px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: var(--offwhite);
+  color: var(--green);
+}
+
+/* Grouping frequently used  properties*/
+body,
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
