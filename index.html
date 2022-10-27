@@ -5,46 +5,58 @@
     <title>Random Password Generator</title>
   </head>
   <body>
-    <div id="password-1" onClick="copyPassword(passwordOne)">
-      password appears here
-    </div>
-    <div id="password-2" onClick="copyPassword(passwordTwo)">
-      password appears here
-    </div>
-    <p>
-      <label for="password-lengths">Select Desired Password Length</label>
-      <select id="password-lengths">
-        <option disabled selected>Lengths</option>
-        <option value="12">12</option>
-        <option value="15">15</option>
-        <option value="17">17</option>
-      </select>
-      characters
-    </p>
-    <label for="radio-value">Remove Numbers or Symbols</label>
-    <p></p>
-    <input
-      type="radio"
-      value="num"
-      name="filter-char"
-      class="radio-value"
-      onClick="setFilter()"
-    />
-    Filter numbers
-    <input
-      type="radio"
-      value="sym"
-      name="filter-char"
-      class="radio-value"
-      onClick="setFilter()"
-    />
-    Filter symbols
-    <button
-      id="generate-btn"
-      onClick="setTextContent(passwordOne); setTextContent(passwordTwo);"
-    >
-      Generate Password
-    </button>
+    <main id="app">
+    <section id="generate-passwords">
+      <h1 id="title"><p id="white">Generate a</p><p id="green">random password</p></h1>
+      <h3>Never use an insecure password again.</h3>
+      <forum>
+        <label for="password-lengths">Desired password length</label>
+        <input type="number" id="user-input" min="10" max="20" />
+        characters
+        <p>
+          <label for="radio-value">Remove Numbers or Symbols</label>
+          <input
+            type="radio"
+            value="num"
+            name="filter-char"
+            class="radio-value"
+            onClick="setFilter()"
+          />
+          Numbers
+          <input
+            type="radio"
+            value="sym"
+            name="filter-char"
+            class="radio-value"
+            onClick="setFilter()"
+          />
+          Symbols
+        </p>
+        <input
+          id="generate-btn"
+          type="submit"
+          value="Generate Password"
+          onClick="setTextContent(passwordOne); setTextContent(passwordTwo); return false;"
+        />
+      </forum>
+    </section>
+      <section id="password-divs">
+        <div
+          id="password-1"
+          class="password"
+          onClick="copyPassword(passwordOne)"
+        >
+          password appears here
+        </div>
+        <div
+          id="password-2"
+          class="password"
+          onClick="copyPassword(passwordTwo)"
+        >
+          password appears here
+        </div>
+      </section>
+    </main>
     <script type="text/javascript" src="index.js"></script>
   </body>
 </html>

@@ -14,20 +14,21 @@ const CHARACTERS  = [
 let radioButtons = document.getElementsByClassName("radio-value");
 let passwordOne = document.getElementById("password-1");
 let passwordTwo = document.getElementById("password-2");
-let lengthsEl = document.getElementById("password-lengths");
+let userInput = document.getElementById("user-input");
 let isFiltered = false;
 let passwordString;
 let filtered;
 
-//Generates password in password div
+//Sets text content of the password string divs with generated password
 function setTextContent(element) {
   isFiltered ? generatePassword(filtered) : generatePassword(CHARACTERS);
   element.textContent = passwordString;
+  console.log('clicked')
 }
 
-//Sets text content of the password string
+//Generates password 
 function generatePassword(arr) {
-  let selectedLength = parseInt(lengthsEl.value);
+  let selectedLength = parseInt(userInput.value);
   passwordString = "";
   for (let i = 0; i <= selectedLength; i++) {
     let randomIndex = Math.floor(Math.random() * arr.length);
@@ -43,6 +44,8 @@ function copyPassword(element) {
   alert("Password copied to clipboard!");
 }
 
+
+//Sets filter based on selected options then uses filterCharacters to filter array based on selected option
 function setFilter() {
   let regexNum = /\D/;
   let regexSym = /[^_\W]+/;
@@ -56,6 +59,7 @@ function setFilter() {
   radioValue === "num" ? filterCharacters(regexNum) : filterCharacters(regexSym);
 }
 
+//For use in setFilter, uses selected filtering option to filter and return array of characters
 function filterCharacters(reg) {
   filtered = CHARACTERS.filter((character) => reg.test(character));
   isFiltered = true;
