@@ -28,7 +28,7 @@
       value="num"
       name="filter-char"
       class="radio-value"
-      onClick="filterCharacters()"
+      onClick="setFilter()"
     />
     Filter numbers
     <input
@@ -36,12 +36,12 @@
       value="sym"
       name="filter-char"
       class="radio-value"
-      onClick="filterCharacters()"
+      onClick="setFilter()"
     />
     Filter symbols
     <button
       id="generate-btn"
-      onClick="generatePassword(passwordOne); generatePassword(passwordTwo);"
+      onClick="setTextContent(passwordOne); setTextContent(passwordTwo);"
     >
       Generate Password
     </button>

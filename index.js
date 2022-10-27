@@ -20,13 +20,13 @@ let passwordString;
 let filtered;
 
 //Generates password in password div
-function generatePassword(element) {
-    isFiltered ? setTextContent(filtered) : setTextContent(CHARACTERS);
-    element.textContent = passwordString;
-  }
-  
+function setTextContent(element) {
+  isFiltered ? generatePassword(filtered) : generatePassword(CHARACTERS);
+  element.textContent = passwordString;
+}
+
 //Sets text content of the password string
-function setTextContent(arr) {
+function generatePassword(arr) {
   let selectedLength = parseInt(lengthsEl.value);
   passwordString = "";
   for (let i = 0; i <= selectedLength; i++) {
@@ -43,14 +43,7 @@ function copyPassword(element) {
   alert("Password copied to clipboard!");
 }
 
-function setRegex(reg) {
-  filtered = CHARACTERS.filter((character) => reg.test(character));
-  isFiltered = true;
-  return filtered;
-}
-
-
-function filterCharacters() {
+function setFilter() {
   let regexNum = /\D/;
   let regexSym = /[^_\W]+/;
   let radioValue;
@@ -60,5 +53,11 @@ function filterCharacters() {
       radioValue = button.value;
     }
   }
-  radioValue === "num" ? setRegex(regexNum) : setRegex(regexSym);
+  radioValue === "num" ? filterCharacters(regexNum) : filterCharacters(regexSym);
+}
+
+function filterCharacters(reg) {
+  filtered = CHARACTERS.filter((character) => reg.test(character));
+  isFiltered = true;
+  return filtered;
 }
