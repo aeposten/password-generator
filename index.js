@@ -23,10 +23,10 @@ let filtered;
 function setTextContent(element) {
   isFiltered ? generatePassword(filtered) : generatePassword(CHARACTERS);
   element.textContent = passwordString;
-  console.log('clicked')
+  console.log("clicked");
 }
 
-//Generates password 
+//Generates password
 function generatePassword(arr) {
   let selectedLength = parseInt(userInput.value);
   passwordString = "";
@@ -40,10 +40,10 @@ function generatePassword(arr) {
 //Copies password to clipboard on click
 function copyPassword(element) {
   let copiedText = element.textContent;
-  navigator.clipboard.writeText(copiedText);
-  alert("Password copied to clipboard!");
+  navigator.clipboard.writeText(copiedText).then(() => {
+    alert("Password copied to clipboard!");
+  });
 }
-
 
 //Sets filter based on selected options then uses filterCharacters to filter array based on selected option
 function setFilter() {
@@ -56,7 +56,9 @@ function setFilter() {
       radioValue = button.value;
     }
   }
-  radioValue === "num" ? filterCharacters(regexNum) : filterCharacters(regexSym);
+  radioValue === "num"
+    ? filterCharacters(regexNum)
+    : filterCharacters(regexSym);
 }
 
 //For use in setFilter, uses selected filtering option to filter and return array of characters
