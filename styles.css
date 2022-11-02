@@ -20,14 +20,14 @@ body {
 }
 
 .pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .text {
-    cursor: text;
+  cursor: text;
 }
 /* Formatting for "app" elementt */
-#app {
+.app {
   width: 80%;
   max-width: 600px;
   background-color: var(--appbg);
@@ -48,22 +48,24 @@ h3 {
   color: white;
 }
 
-#white {
-  color: white;
-}
-
-#green {
+.green {
   color: var(--green);
 }
 
-/* Formatting for Generate Password Buttpm */
-#generate-passwords {
+/* Formatting for Generate Password Buttom */
+.generate-passwords {
   width: 90%;
   display: flex;
   flex-direction: column;
 }
 
-#generate-btn {
+.btns {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.btn {
   width: 170px;
   height: 40px;
   margin: 20px 0 20px 0;
@@ -75,12 +77,13 @@ h3 {
   transition-duration: 200ms;
 }
 
-#generate-btn:hover, #generate-btn:focus {
-    transform: scale(1.1);
+.btn:hover,
+.btn:focus {
+  transform: scale(1.1);
 }
 
 /* Formatting for divs where passwords appear */
-#password-divs {
+.password-divs {
   width: 90%;
   display: flex;
   justify-content: space-around;
@@ -107,7 +110,7 @@ h3 {
 
 /* Grouping frequently used  properties*/
 body,
-#app {
+.app {
   display: flex;
   flex-direction: column;
   justify-content: center;

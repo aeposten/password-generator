@@ -11,10 +11,11 @@ const CHARACTERS  = [
     '.', '?', '/'
   ]
 
-let radioButtons = document.getElementsByClassName("radio-value");
-let passwordOne = document.getElementById("password-1");
-let passwordTwo = document.getElementById("password-2");
-let userInput = document.getElementById("user-input");
+const radioButtons = document.getElementsByClassName("radio-value");
+const passwordOne = document.getElementById("password-1");
+const passwordTwo = document.getElementById("password-2");
+const userInput = document.getElementById("user-input");
+const clicked = document.getElementById("click");
 let isFiltered = false;
 let passwordString;
 let filtered;
@@ -23,7 +24,6 @@ let filtered;
 function setTextContent(element) {
   isFiltered ? generatePassword(filtered) : generatePassword(CHARACTERS);
   element.textContent = passwordString;
-  console.log("clicked");
 }
 
 //Generates password
@@ -63,6 +63,13 @@ function filterCharacters(reg) {
 function copyPassword(element) {
   let copiedText = element.textContent;
   navigator.clipboard.writeText(copiedText).then(() => {
-    alert("Password copied to clipboard!");
+    clicked.textContent = "Password Copied to Clipboard";
   });
+}
+
+//resets password inputs and passwords
+function resetPasswords() {
+  passwordOne.textContent = "password appears here";
+  passwordTwo.textContent = "password appears here";
+  clicked.textContent = "Click password to copy to clipboard";
 }
