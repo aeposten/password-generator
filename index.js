@@ -59,12 +59,17 @@ function filterCharacters(reg) {
   return filtered;
 }
 
-//Copies password to clipboard on click
+
+//Copies password to clipboard
 function copyPassword(element) {
   let copiedText = element.textContent;
-  navigator.clipboard.writeText(copiedText).then(() => {
-    clicked.textContent = "Password Copied to Clipboard";
-  });
+  try {
+    navigator.clipboard.writeText(copiedText).then(() => {
+      clicked.textContent = "Password Copied to Clipboard";
+    });
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 //resets password inputs and passwords
