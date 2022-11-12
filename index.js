@@ -18,11 +18,14 @@ const userInput = document.getElementById("user-input");
 const clicked = document.getElementById("click");
 let isFiltered = false;
 let passwordString;
-let filtered;
+let filtered = CHARACTERS;
+const regexNum = /\D/;
+const regexSym = /[^_\W]+/;
+
 
 //Sets text content of the password string divs with generated password
 function setTextContent(element) {
-  isFiltered ? generatePassword(filtered) : generatePassword(CHARACTERS);
+  generatePassword(filtered);
   element.textContent = passwordString;
 }
 
@@ -38,24 +41,40 @@ function generatePassword(arr) {
 }
 //Sets filter based on selected options then uses filterCharacters to filter array based on selected option
 function setFilter() {
-  let regexNum = /\D/;
-  let regexSym = /[^_\W]+/;
-  let radioValue;
+  let checkParams = [];
 
   for (button of radioButtons) {
     if (button.checked) {
-      radioValue = button.value;
+       checkParams.push(button.value);
     }
   }
-  radioValue === "numbers"
-    ? filterCharacters(regexNum)
-    : filterCharacters(regexSym);
+  
+  if(checkParams.length == 0 || checkParams.length == 1){
+    isFiltered = false;
+    filtered = CHARACTERS;
+  }else if(checkParams.length == 2){
+    isFiltered = true;
+  }
+  
+  for(let param of checkParams){
+    if(param == "numbers"){
+      filterCharacters(regexNum)
+    }
+    if(param == "symbols"){
+      filterCharacters(regexSym)
+    }
+  }
 }
 
 //For use in setFilter, uses selected filtering option to filter and return array of characters
 function filterCharacters(reg) {
-  filtered = CHARACTERS.filter((character) => reg.test(character));
-  isFiltered = true;
+  if(isFiltered == false){
+    filtered = CHARACTERS.filter((character) => reg.test(character));
+  }
+  if(isFiltered == true){
+    filtered = filtered.filter((character) => reg.test(character));
+  }
+    
   return filtered;
 }
 
